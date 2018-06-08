@@ -4,7 +4,8 @@
   "description": "Sync mods with the server",
   "main": "index.js",
   "scripts": {
-    "test": "eslint **/*.js",
+    "test": "echo \"Warning: no test specified\"",
+    "lint": "eslint **/*.js",
     "pkg": "pkg index.js --out-path pkg"
   },
   "repository": {

@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - lts/*
+cache:
+  directories:
+    - node_modules
+install:
+  - npm install
+before_deploy:
+  - npm run pkg
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file_glob: true
+  file: pkg/*
+  skip_cleanup: true
+  on:
+    repo: yuta0801/factorio-mods-sync
+    tags: true
