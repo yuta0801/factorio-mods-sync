@@ -44,7 +44,7 @@ console.log(chalk.yellow(logo))
   const done = await mods.downloadMods(list)
   console.log('Downloaded ' + done.join(', ') + '!')
 
-  util.paktc()
+  util.paktc('Press any key to exit...')
 })()
 
 process.on('unhandledRejection', err => console.log(err))
