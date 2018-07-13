@@ -1,12 +1,13 @@
 {
-  "name": "factorio-mods-sync",
+  "name": "fms",
   "version": "1.0.1",
-  "description": "Sync mods with the server",
+  "description": "Synchronize mods with the Factorio server",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Warning: no test specified\"",
-    "lint": "eslint **/*.js",
-    "pkg": "pkg index.js --out-path pkg"
+    "lint": "eslint .",
+    "pkg": "pkg . --out-path pkg"
   },
   "repository": {
     "type": "git",
@@ -29,11 +30,13 @@
     "request": "^2.85.0"
   },
   "devDependencies": {
+    "eslint": "^5.10.0",
     "pkg": "^4.3.1"
   },
   "keywords": [
     "factorio",
     "mods",
     "sync"
-  ]
+  ],
+  "private": true
 }
