@@ -2,12 +2,11 @@ language: node_js
 node_js:
   - lts/*
 cache:
+  yarn: true
   directories:
     - node_modules
-install:
-  - npm install
-before_deploy:
-  - npm run pkg
+    - $HOME/.pkg-cache
+before_deploy: yarn pkg
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
