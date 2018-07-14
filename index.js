@@ -30,7 +30,7 @@ console.log(chalk.yellow(logo))
     source: async (answersSoFar, input) => {
       if (!input) return choices
       const regex = new RegExp(input, 'i')
-      return choices.filter(e => regex.exec(e.name))
+      return choices.filter(e => regex.test(e.name))
     },
   })
 
