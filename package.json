@@ -15,8 +15,7 @@
     "inquirer": "^7.0.0",
     "inquirer-autocomplete-prompt": "^1.0.1",
     "node-fetch": "^2.1.2",
-    "progress": "^2.0.0",
-    "request": "^2.85.0"
+    "progress": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
