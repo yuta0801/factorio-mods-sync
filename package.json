@@ -10,17 +10,17 @@
     "pkg": "pkg . --out-path pkg"
   },
   "dependencies": {
-    "chalk": "^2.4.1",
+    "chalk": "^3.0.0",
     "clui": "^0.3.6",
-    "inquirer": "^5.2.0",
-    "inquirer-autocomplete-prompt": "^0.12.2",
+    "inquirer": "^7.0.0",
+    "inquirer-autocomplete-prompt": "^1.0.1",
     "node-fetch": "^2.1.2",
     "preferences": "^1.0.2",
     "progress": "^2.0.0",
     "request": "^2.85.0"
   },
   "devDependencies": {
-    "eslint": "^5.10.0",
+    "eslint": "^6.6.0",
     "pkg": "^4.3.1"
   }
 }
