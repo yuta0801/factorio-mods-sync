@@ -60,6 +60,8 @@ console.log(chalk.yellow(logo))
     console.log('To play on that server, Don\'t forget to change the version of Factorio')
   }
 
+  console.log('After downloading mods, you need restart Factorio for apply them')
+
   util.paktc('Press any key to exit...')
 })().catch(error => {
   console.log('Unexpected error has occurred!')
