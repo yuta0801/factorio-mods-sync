@@ -43,12 +43,17 @@ console.log(chalk.yellow(logo))
 
   const game = await multiplayer.getGameDetails(id)
 
-  const list = await mods.getMods(game.mods)
+  const installed = modlist.listMods()
+  const needed = util.neededMods(game.mods, installed)
+  const list = await mods.getMods(needed)
+
+  console.log(`Info: ${installed.length} mods has installed, ` +
+    `will downloaded ${list.length} mods`)
 
   const done = await mods.downloadMods(list)
-  console.log('Downloaded ' + done.join(', ') + '!')
+  console.log(`Downloaded ${done.join(', ')}!`)
 
-  modlist.append(done)
+  modlist.enable(game.mods.map(mod => mod.name))
 
   if (version && game.application_version.game_version !== version) {
     console.log('Info: You have selected the different version of the last version you played')
