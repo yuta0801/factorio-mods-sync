@@ -64,8 +64,9 @@ console.log(chalk.yellow(logo))
 
   util.paktc('Press any key to exit...')
 })().catch(error => {
-  console.log('Unexpected error has occurred!')
-  console.log('Please let me know following message for improve this tool:\n')
+  console.log('Unexpected error has occurred!\n')
+  if (error instanceof Error)
+    console.log('Please let me know following message for improve this tool:\n')
   console.log(error)
   util.paktc('Press any key to exit...')
 })
