@@ -6,12 +6,14 @@ cache:
   directories:
     - node_modules
     - $HOME/.pkg-cache
-before_deploy: yarn pkg
+before_deploy:
+  - yarn pkg
+  - for i in fms-*; do zip $i.zip $i -9; done
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   file_glob: true
-  file: pkg/*
+  file: pkg/*.zip
   skip_cleanup: true
   on:
     repo: yuta0801/factorio-mods-sync
