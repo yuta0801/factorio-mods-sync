@@ -3,10 +3,10 @@ const logo = require('./lib/logo')
 const auth = require('./lib/auth')
 const mods = require('./lib/mods')
 const util = require('./lib/util')
-const path = require('./lib/path')
 const multiplayer = require('./lib/multiplayer')
 const prompts = require('./lib/prompts')
 const player = require('./lib/player')
+const modlist = require('./lib/modlist')
 
 console.log(chalk.yellow(logo))
 
@@ -45,12 +45,10 @@ console.log(chalk.yellow(logo))
 
   const list = await mods.getMods(game.mods)
 
-  util.deleteFiles(path.modsPath, file => {
-    return file.endsWith('.zip') || file === 'mod-list.json'
-  })
-
   const done = await mods.downloadMods(list)
   console.log('Downloaded ' + done.join(', ') + '!')
+
+  modlist.append(done)
 
   if (version && game.application_version.game_version !== version) {
     console.log('Info: You have selected the different version of the last version you played')
