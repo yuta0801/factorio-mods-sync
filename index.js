@@ -14,8 +14,11 @@ console.log(chalk.yellow(logo))
   const creds = await auth.getCredentials()
 
   const games = await multiplayer.getGames(creds)
+
+  const hasModsGames = games.filter(game => game.has_mods)
+
   const favs = player.favouriteServers
-  const sorted = util.sortWithfavourite(games, favs)
+  const sorted = util.sortWithfavourite(hasModsGames, favs)
 
   const allChoices = sorted.map(e => ({
     name: e.name, value: e.game_id,
