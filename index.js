@@ -22,15 +22,20 @@ console.log(chalk.yellow(logo))
     ver: e.application_version.game_version,
   }))
 
+  let choices = allChoices
   const version = player.lastPlayedVersion
-  const sameVersion = allChoices.filter(e => e.ver === version)
-  sameVersion.push({
-    name: chalk.bold('View all versions of the server'), value: 'all',
-  })
 
-  console.log(`Currently viewing only version ${version} of the server`)
-  console.log('To view all servers, select `View all versions of the server`')
-  let id = await prompts.selectServer(sameVersion)
+  if (version) {
+    const sameVersion = allChoices.filter(e => e.ver === version)
+    sameVersion.push({
+      name: chalk.bold('View all versions of the server'), value: 'all',
+    })
+    choices = sameVersion
+    console.log(`Currently viewing only version ${version} of the server`)
+    console.log('To view all servers, select `View all versions of the server`')
+  }
+
+  let id = await prompts.selectServer(choices)
   if (id === 'all') id = await prompts.selectServer(allChoices)
 
   const game = await multiplayer.getGameDetails(id)
@@ -44,7 +49,7 @@ console.log(chalk.yellow(logo))
   const done = await mods.downloadMods(list)
   console.log('Downloaded ' + done.join(', ') + '!')
 
-  if (game.application_version.game_version !== version) {
+  if (version && game.application_version.game_version !== version) {
     console.log('Info: You have selected the different version of the last version you played')
     console.log('To play on that server, Don\'t forget to change the version of Factorio')
   }
