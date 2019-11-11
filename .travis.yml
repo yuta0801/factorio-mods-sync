@@ -8,7 +8,7 @@ cache:
     - $HOME/.pkg-cache
 before_deploy:
   - yarn pkg
-  - for i in fms-*; do zip $i.zip $i -9; done
+  - for i in pkg/fms-*; do zip $i.zip $i -9; done
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
