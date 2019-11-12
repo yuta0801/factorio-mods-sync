@@ -43,17 +43,26 @@ console.log(chalk.yellow(logo))
 
   const game = await multiplayer.getGameDetails(id)
 
-  const installed = modlist.listMods()
-  const needed = util.neededMods(game.mods, installed)
-  const list = await mods.getMods(needed)
+  const exists = modlist.listMods()
+  const require = await mods.getMods(game.mods)
+
+  const [needed, installed] = util.neededMods(require, exists)
+
+  const failed = modlist.verifyMods(installed)
+  if (failed.length) {
+    for (const mod of failed) {
+      const choice = await prompts.resolveFailedVerify(mod.file_name)
+      if (choice === 'reinstall') needed.push(mod)
+    }
+  }
 
   console.log([
     `Info: ${installed.length} mods has installed`,
     `of total ${game.mods.length} mods`,
-    `and the remaining ${list.length} mods will be downloaded`,
+    `and the remaining ${needed.length} mods will be downloaded`,
   ].join(' '))
 
-  const done = await mods.downloadMods(list)
+  const done = await mods.downloadMods(needed)
   console.log(`Downloaded ${done.join(', ')}!`)
 
   modlist.enable(game.mods.map(mod => mod.name))
