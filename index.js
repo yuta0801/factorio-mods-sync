@@ -47,8 +47,11 @@ console.log(chalk.yellow(logo))
   const needed = util.neededMods(game.mods, installed)
   const list = await mods.getMods(needed)
 
-  console.log(`Info: ${installed.length} mods has installed, ` +
-    `will downloaded ${list.length} mods`)
+  console.log([
+    `Info: ${installed.length} mods has installed`,
+    `of total ${game.mods.length} mods`,
+    `and the remaining ${list.length} mods will be downloaded`,
+  ].join(' '))
 
   const done = await mods.downloadMods(list)
   console.log(`Downloaded ${done.join(', ')}!`)
