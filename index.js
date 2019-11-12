@@ -1,5 +1,4 @@
 const chalk = require('chalk')
-const logo = require('./lib/logo')
 const auth = require('./lib/auth')
 const mods = require('./lib/mods')
 const util = require('./lib/util')
@@ -8,9 +7,9 @@ const prompts = require('./lib/prompts')
 const player = require('./lib/player')
 const modlist = require('./lib/modlist')
 
-console.log(chalk.yellow(logo))
-
 !(async () => {
+  console.log(chalk.yellow('FactorioModsSync'))
+
   const creds = await auth.getCredentials()
 
   const games = await multiplayer.getGames(creds)
