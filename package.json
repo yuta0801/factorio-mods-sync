@@ -14,11 +14,15 @@
     "clui": "^0.3.6",
     "inquirer": "^7.0.0",
     "inquirer-autocomplete-prompt": "^1.0.1",
+    "multi-progress": "^2.0.0",
     "node-fetch": "^2.1.2",
-    "progress": "^2.0.0"
+    "p-limit": "^2.2.1"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
     "pkg": "^4.3.1"
+  },
+  "resolutions": {
+    "multi-progress/progress": "^2.0.0"
   }
 }
