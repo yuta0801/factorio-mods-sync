@@ -9,7 +9,7 @@ const modlist = require('./lib/modlist')
 const _ = require('./lib/i18n').__
 
 !(async () => {
-  console.log(chalk.yellow('FactorioModsSync'))
+  console.log(chalk.yellow('\nFactorioModsSync\n'))
 
   const creds = await auth.getCredentials()
 

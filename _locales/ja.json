@@ -18,7 +18,9 @@
   "MODS_STATUS": "情報：%s個のモッドがすでに存在し、要求されている合計%s個のうち、残りの%s個がダウンロードされます",
   "DOWNLOADED": "%s個のモッドをダウンロードしました！",
   "NEED_CHANGE_VERSION": "情報：最後にプレイしたバージョンとは異なるバージョンが選択されました\nそのサーバーでプレイするには、Factorioのバージョンを変更することを忘れないでください",
-  "NEED_RESTART": "ダウンロードしたモッドを読み込むにはFactorioの再起動が必要です",
+  "NEED_RESTART": "情報：ダウンロードしたモッドを読み込むにはFactorioの再起動が必要です",
   "REQUESTING": "%sを取得中。しばらくお待ち下さい...",
-  "PROGRESS": "[:bar] %sのダウンロード :rate/bps :percent :etas"
+  "PROGRESS": "[:bar] %sのダウンロード :rate/bps :percent :etas",
+  "SERVERS": "全サーバー",
+  "SERVER": "サーバーの詳細"
 }
