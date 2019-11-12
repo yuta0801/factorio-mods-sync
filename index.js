@@ -6,6 +6,7 @@ const multiplayer = require('./lib/multiplayer')
 const prompts = require('./lib/prompts')
 const player = require('./lib/player')
 const modlist = require('./lib/modlist')
+const _ = require('./lib/i18n').__
 
 !(async () => {
   console.log(chalk.yellow('FactorioModsSync'))
@@ -30,11 +31,10 @@ const modlist = require('./lib/modlist')
   if (version) {
     const sameVersion = allChoices.filter(e => e.ver === version)
     sameVersion.push({
-      name: chalk.bold('View all versions of the server'), value: 'all',
+      name: chalk.bold(_('VIEW_ALL_VERSION')), value: 'all',
     })
     choices = sameVersion
-    console.log(`Currently viewing only version ${version} of the server`)
-    console.log('To view all servers, select `View all versions of the server`')
+    console.log(_('ONLY_LIST_VERSION', version))
   }
 
   let id = await prompts.selectServer(choices)
@@ -55,29 +55,24 @@ const modlist = require('./lib/modlist')
     }
   }
 
-  console.log([
-    `Info: ${installed.length} mods has installed`,
-    `of total ${game.mods.length} mods`,
-    `and the remaining ${needed.length} mods will be downloaded`,
-  ].join(' '))
+  const status = [installed, game.mods, needed]
+  console.log(_('MODS_STATUS', ...status.map(s => s.length)))
 
   const done = await mods.downloadMods(needed)
-  console.log(`Downloaded ${done.join(', ')}!`)
+  console.log(_('DOWNLOADED', done.join(', ')))
 
   modlist.enable(game.mods.map(mod => mod.name))
 
-  if (version && game.application_version.game_version !== version) {
-    console.log('Info: You have selected the different version of the last version you played')
-    console.log('To play on that server, Don\'t forget to change the version of Factorio')
-  }
+  if (version && game.application_version.game_version !== version)
+    console.log(_('NEED_CHANGE_VERSION'))
 
-  console.log('After downloading mods, you need restart Factorio for apply them')
+  console.log(_('NEED_RESTART'))
 
-  util.paktc('Press any key to exit...')
+  util.paktc(util._('PAKTC'))
 })().catch(error => {
-  console.log('Unexpected error has occurred!\n')
+  console.log(_('ERROR_OCCURRED'))
   if (error instanceof Error)
-    console.log('Please let me know following message for improve this tool:\n')
+    console.log(_('LET_ME_KNOW_ERROR'))
   console.log(error)
-  util.paktc('Press any key to exit...')
+  util.paktc(util._('PAKTC'))
 })
