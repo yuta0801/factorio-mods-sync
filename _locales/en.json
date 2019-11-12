@@ -16,7 +16,7 @@
   "VERIFY_IGNORE": "Ignore",
   "VERIFY_REINSTALL": "Reinstall",
   "MODS_STATUS": "Info: %s mods has installed of total %s mods and the remaining %s mods will be downloaded",
-  "DOWNLOADED": "Downloaded %s!",
+  "DOWNLOADED": "Downloaded %s mods!",
   "NEED_CHANGE_VERSION": "Info: You have selected the different version of the last version you played\nTo play on that server, Don't forget to change the version of Factorio",
   "NEED_RESTART": "After downloading mods, you need restart Factorio for apply them",
   "REQUESTING": "Requesting %s, please wait...",

@@ -59,7 +59,7 @@ const _ = require('./lib/i18n').__
   console.log(_('MODS_STATUS', ...status.map(s => s.length)))
 
   const done = await mods.downloadMods(needed)
-  console.log(_('DOWNLOADED', done.join(', ')))
+  console.log(_('DOWNLOADED', done.length))
 
   modlist.enable(game.mods.map(mod => mod.name))
 
