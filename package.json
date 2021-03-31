@@ -18,7 +18,7 @@
     "node-fetch": "^2.1.2",
     "os-locale": "^4.0.0",
     "p-limit": "^2.2.1",
-    "y18n": "^4.0.0"
+    "y18n": "^4.0.1"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
